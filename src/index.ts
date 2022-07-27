@@ -6,7 +6,7 @@ import { Button } from './Button';
 export { Panel } from './Panel';
 export { Toolbar } from './Toolbar';
 export { ToolbarBlock } from './ToolbarBlock';
-export { Button, IButtonProperties } from './Button';
+export { Button, IButtonProperties, ButtonEventData } from './Button';
 
 customElements.define('mjstb-panel', Panel);
 customElements.define('mjstb-toolbar', Toolbar);
