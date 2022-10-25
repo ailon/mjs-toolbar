@@ -13,8 +13,8 @@ export class Toolbar extends HTMLElement {
 
     this._container = document.createElement('div');
     this._container.className = 'toolbar';
-    this._container.style.width = '100%';
-    this._container.style.height = '100%';
+    // this._container.style.width = '100%';
+    // this._container.style.height = '100%';
     this._container.style.display = 'flex';
     this._container.style.backgroundColor = 'yellow';
 
