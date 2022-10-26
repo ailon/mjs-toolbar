@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Button, Panel, Toolbar, ToolbarBlock } from '../../src/index';
+import { Button, ContentBlock, Panel, Toolbar, ToolbarBlock } from '../../src/index';
 
 export * from './../../src/index';
 
@@ -49,6 +49,23 @@ export class Experiments {
     toolbar.appendBlock(block3);
 
     panel.appendToolbar(toolbar);
+
+    const toolboxPanel = <Panel>document.getElementById('toolboxPanel');
+
+    const contentBlock1 = new ContentBlock();
+    contentBlock1.title = 'Block #1';
+    toolboxPanel.appendChild(contentBlock1);
+    const content1 = document.createElement('p');
+    content1.style.fontSize = '1rem';
+    content1.innerText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A officiis non fuga amet esse vitae debitis autem adipisci consequatur saepe voluptatem officia ullam, maiores delectus ad eos reprehenderit facere sapiente!';
+    contentBlock1.appendChild(content1);
+
+    const contentBlock2 = new ContentBlock();
+    contentBlock2.title = 'Block #2';
+    toolboxPanel.appendChild(contentBlock2);
+    const content2 = document.createElement('p');
+    content2.innerText = 'Hello, World!';
+    contentBlock2.appendChild(content2);
   }
 
   public detachPanel(): void {

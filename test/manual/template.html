@@ -1,61 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MJS Toolbar manual testing</title>
-  <script>
-    let experiments;
-    document.addEventListener("DOMContentLoaded", function () {
-      experiments = new mjstoolbar.Experiments();
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MJS Toolbar manual testing</title>
+    <script>
+      let experiments;
+      document.addEventListener('DOMContentLoaded', function () {
+        experiments = new mjstoolbar.Experiments();
 
-      experiments.defineElements();
-      experiments.setup();
-    });    
+        //experiments.defineElements();
+        experiments.setup();
+      });
 
-    // customElements.define('mjstb-panel', Panel);
-  </script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      background-color: blue;
-      font-size: 40px;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    button {
-      font-family: 'Courier New', Courier, monospace;
-    }
+      // customElements.define('mjstb-panel', Panel);
+    </script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: blue;
+        font-size: 40px;
+        font-family: 'Times New Roman', Times, serif;
+      }
+      button {
+        font-family: 'Courier New', Courier, monospace;
+      }
 
-    mjstb-panel::part(panel) {
-      border: 4px solid brown;
-    }
+      mjstb-panel::part(panel) {
+        border: 4px solid brown;
+      }
 
-    mjstb-panel::part(toolbar) {
-      border: 3px dotted cornflowerblue;
-    }
+      mjstb-panel::part(toolbar) {
+        border: 3px dotted cornflowerblue;
+      }
 
-    mjstb-panel::part(toolbar-block):hover {
-      background-color: orangered;
-    }
-    mjstb-panel::part(button) {
-      background-color: #333;
-      /* width: 24px;
+      mjstb-panel::part(toolbar-block):hover {
+        background-color: orangered;
+      }
+      mjstb-panel::part(button) {
+        background-color: #333;
+        /* width: 24px;
       height: 24px; */
-      color: aquamarine;
-    }
-  </style>
-</head>
-<body>
-    <div style="width: 70%; min-width: 400px; height: 400px; background-color: antiquewhite; margin: 10px auto; display: flex; flex-direction: column;">
-      <div style="height: 80px; background-color: aquamarine; margin: 3px; padding: 4px;">
-        <mjstb-panel id="tbPanel"></mjstb-panel>
+        color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        background-color: lightblue;
+        margin: 10px auto;
+      "
+    >
+      <div
+        style="
+          width: 70%;
+          min-width: 400px;
+          height: 400px;
+          background-color: antiquewhite;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div
+          style="
+            height: 80px;
+            background-color: aquamarine;
+            margin: 3px;
+            padding: 4px;
+          "
+        >
+          <mjstb-panel id="tbPanel"></mjstb-panel>
+        </div>
+        <div
+          style="
+            height: 80px;
+            background-color: goldenrod;
+            margin: 3px;
+            padding: 4px;
+          "
+        >
+          <button onclick="experiments.detachPanel();">detach</button>
+          <button onclick="experiments.attachPanel();">attach</button>
+        </div>
       </div>
-      <div style="height: 80px; background-color: goldenrod; margin: 3px; padding: 4px;">
-        <button onclick="experiments.detachPanel();">detach</button>
-        <button onclick="experiments.attachPanel();">attach</button>
+      <div style="width: 30%; background-color: blueviolet;">
+        <mjstb-panel id="toolboxPanel"></mjstb-panel>
       </div>
     </div>
-</body>
+  </body>
 </html>

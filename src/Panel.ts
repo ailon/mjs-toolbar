@@ -5,10 +5,38 @@ export class Panel extends HTMLElement {
 
   private left = 20;
   private top = 300;
-  private minWidth = 200;
-  private minHeight = 60;
-  private width = 400;
-  private height = 80;
+
+  private _minWidth = 200;
+  public get minWidth() {
+    return this._minWidth;
+  }
+  public set minWidth(value) {
+    this._minWidth = value;
+  }
+
+  private _minHeight = 60;
+  public get minHeight() {
+    return this._minHeight;
+  }
+  public set minHeight(value) {
+    this._minHeight = value;
+  }
+  
+  private _width = 400;
+  public get width() {
+    return this._width;
+  }
+  public set width(value) {
+    this._width = value;
+  }
+
+  private _height = 80;
+  public get height() {
+    return this._height;
+  }
+  public set height(value) {
+    this._height = value;
+  }
 
   private prevX = 0;
   private prevY = 0;
@@ -137,8 +165,8 @@ export class Panel extends HTMLElement {
         this.left += deltaX;
         this.top += deltaY;
       } else if (this.isResizing) {
-        this.width = Math.max(this.width + deltaX, this.minWidth);
-        this.height = Math.max(this.height + deltaY, this.minHeight);
+        this._width = Math.max(this._width + deltaX, this._minWidth);
+        this._height = Math.max(this._height + deltaY, this._minHeight);
       }
 
       this.prevX = ev.clientX;
@@ -193,8 +221,8 @@ export class Panel extends HTMLElement {
   private positionPanel() {
     this.style.top = `${this.top}px`;
     this.style.left = `${this.left}px`;
-    this.style.width = `${this.width}px`;
-    this.style.height = `${this.height}px`;
+    this.style.width = `${this._width}px`;
+    this.style.height = `${this._height}px`;
 
     // console.log(this.offsetHeight);
     // console.log(this._panel.offsetHeight);
@@ -202,5 +230,10 @@ export class Panel extends HTMLElement {
 
   public appendToolbar(toolbar: Toolbar): void {
     this._panel.appendChild(toolbar);
+  }
+
+  public appendChild<T extends Node>(node: T): T {
+    this._panel.appendChild(node);
+    return node;
   }
 }
