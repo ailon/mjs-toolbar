@@ -1,7 +1,7 @@
 import { Toolbar } from './index';
 
 export class Panel extends HTMLElement {
-  private _panel: HTMLDivElement;
+  private _panel!: HTMLDivElement;
 
   private left = 20;
   private top = 300;
@@ -52,6 +52,16 @@ export class Panel extends HTMLElement {
 
     this.attachShadow({ mode: 'open' });
 
+    this._panel = document.createElement('div');
+
+    this.onPointerDown = this.onPointerDown.bind(this);
+    this.onPointerMove = this.onPointerMove.bind(this);
+    this.onPointerUp = this.onPointerUp.bind(this);
+
+    this.addResizeGrip = this.addResizeGrip.bind(this);
+  }
+
+  private setup() {
     const styleSheet = document.createElement('style');
     styleSheet.innerHTML = `
       div.toolbar {
@@ -73,7 +83,6 @@ export class Panel extends HTMLElement {
     this.style.position = 'relative';
     this.style.overflow = 'hidden';
 
-    this._panel = document.createElement('div');
     // this._panel.style.display = 'flex';
     // this._panel.style.width = '100%';
     // this._panel.style.height = '100%';
@@ -84,15 +93,10 @@ export class Panel extends HTMLElement {
     this._panel.addEventListener('resize', () => { console.log('ddd') });
 
     this.shadowRoot?.appendChild(this._panel);
-
-    this.onPointerDown = this.onPointerDown.bind(this);
-    this.onPointerMove = this.onPointerMove.bind(this);
-    this.onPointerUp = this.onPointerUp.bind(this);
-
-    this.addResizeGrip = this.addResizeGrip.bind(this);
   }
 
   private connectedCallback() {
+    this.setup();
     this.addResizeGrip();
     this.attachEvents();
   }
