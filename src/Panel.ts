@@ -240,4 +240,8 @@ export class Panel extends HTMLElement {
     this._panel.appendChild(node);
     return node;
   }
+
+  public clear() {
+    this._panel.innerHTML = '';
+  }
 }
