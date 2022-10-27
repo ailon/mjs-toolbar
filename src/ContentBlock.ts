@@ -19,7 +19,7 @@ export class ContentBlock extends HTMLElement {
     // this._container.style.height = '100%';
     this._container.style.display = 'flex';
     this._container.style.flexDirection = 'column';
-    this._container.style.backgroundColor = 'magenta';
+    // this._container.style.backgroundColor = 'magenta';
 
     this._container.setAttribute('part','content-block');
 

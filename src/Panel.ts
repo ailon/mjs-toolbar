@@ -75,6 +75,13 @@ export class Panel extends HTMLElement {
         height: 48px;
         display: block;
       }
+
+      .content-block {
+        margin: 5px;
+      }
+      .content-block h2 {
+        font-size: 1.3rem;
+      }
     `;
 
     this.shadowRoot?.appendChild(styleSheet);
