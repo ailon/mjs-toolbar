@@ -106,6 +106,8 @@ export class Panel extends HTMLElement {
     this.setup();
     this.addResizeGrip();
     this.attachEvents();
+    
+    this.setAttribute('exportparts', 'panel, toolbar, toolbar-block, button: toolbar-button');    
   }
 
   private disconnectedCallback() {
@@ -240,6 +242,7 @@ export class Panel extends HTMLElement {
   }
 
   public appendToolbar(toolbar: Toolbar): void {
+    //toolbar.setAttribute('exportparts', 'toolbar, toolbar-block, button');
     this._panel.appendChild(toolbar);
   }
 

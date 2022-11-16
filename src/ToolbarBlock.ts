@@ -20,6 +20,7 @@ export class ToolbarBlock extends HTMLElement {
   }
 
   public appendButton(button: Button): void {
+    //button.setAttribute('exportparts', 'button');
     this._container.appendChild(button);
 
     button.addEventListener('buttonclick', (ev) => {

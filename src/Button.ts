@@ -37,10 +37,14 @@ export class Button extends HTMLElement {
       } else {
         this._button.innerHTML = this.icon;
       }
+      this._button.title = properties.text ?? '';
     } else if (this.text !== undefined) {
       this._button.textContent = this.text;
     }
     //this._button.textContent = `button-${Math.round(Math.random() * 1000)}`;
+
+    this._button.style.display = 'flex';
+    this._button.style.alignItems = 'center';
 
     this._button.setAttribute('part', 'button');
 

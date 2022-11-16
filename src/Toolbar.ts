@@ -16,7 +16,7 @@ export class Toolbar extends HTMLElement {
     // this._container.style.width = '100%';
     // this._container.style.height = '100%';
     this._container.style.display = 'flex';
-    this._container.style.backgroundColor = 'yellow';
+    //this._container.style.backgroundColor = 'yellow';
 
     this._container.setAttribute('part','toolbar');
 
@@ -24,6 +24,7 @@ export class Toolbar extends HTMLElement {
   }
 
   public appendBlock(block: ToolbarBlock): void {
+    //block.setAttribute('exportparts', 'toolbar-block, button');
     this._container.appendChild(block);
     block.addEventListener('buttonclick', (ev) => {
       console.log('toolbar', ev.detail.button.command);
