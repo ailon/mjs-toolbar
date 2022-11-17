@@ -26,10 +26,12 @@ export class ContentBlock extends HTMLElement {
     super.appendChild(this._container);
 
     this._titleElement = document.createElement('h2');
+    this._titleElement.setAttribute('part', 'content-block-title');
     this._titleElement.innerText = this.title;
     this._container.appendChild(this._titleElement);
 
     this._contentArea = document.createElement('div');
+    this._contentArea.setAttribute('part', 'content-block-body');
     this._container.appendChild(this._contentArea);
 
   }
