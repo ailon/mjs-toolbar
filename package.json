@@ -1,6 +1,6 @@
 {
   "name": "@markerjs/mjs-toolbar",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "MJS Toolbar",
   "main": "mjs-toolbar.js",
   "module": "mjs-toolbar.esm.js",
