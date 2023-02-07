@@ -1,6 +1,6 @@
 {
   "name": "mjs-toolbar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "MJS Toolbar",
   "main": "mjs-toolbar.js",
   "module": "mjs-toolbar.esm.js",
