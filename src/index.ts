@@ -10,8 +10,14 @@ export { ToolbarBlock } from './ToolbarBlock';
 export { Button, IButtonProperties, ButtonEventData } from './Button';
 export { ContentBlock } from './ContentBlock';
 
-customElements.define('mjstb-panel', Panel);
-customElements.define('mjstb-toolbar', Toolbar);
-customElements.define('mjstb-toolbar-block', ToolbarBlock);
-customElements.define('mjstb-button', Button);
-customElements.define('mjstb-content-block', ContentBlock);
+if (
+  window &&
+  window.customElements &&
+  window.customElements.get('mjstb-panel') === undefined
+) {
+  window.customElements.define('mjstb-panel', Panel);
+  window.customElements.define('mjstb-toolbar', Toolbar);
+  window.customElements.define('mjstb-toolbar-block', ToolbarBlock);
+  window.customElements.define('mjstb-button', Button);
+  window.customElements.define('mjstb-content-block', ContentBlock);
+}
