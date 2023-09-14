@@ -27,7 +27,7 @@ export class Toolbar extends HTMLElement {
     //block.setAttribute('exportparts', 'toolbar-block, button');
     this._container.appendChild(block);
     block.addEventListener('buttonclick', (ev) => {
-      console.log('toolbar', ev.detail.button.command);
+      // console.log('toolbar', ev.detail.button.command);
       this.dispatchEvent(
         new CustomEvent<ButtonEventData>('buttonclick', {
           detail: { button: ev.detail.button },

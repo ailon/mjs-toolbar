@@ -97,7 +97,7 @@ export class Panel extends HTMLElement {
 
     this._panel.setAttribute('part', 'panel');
 
-    this._panel.addEventListener('resize', () => { console.log('ddd') });
+    //this._panel.addEventListener('resize', () => { console.log('ddd') });
 
     this.shadowRoot?.appendChild(this._panel);
   }
