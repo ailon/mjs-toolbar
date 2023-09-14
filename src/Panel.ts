@@ -93,7 +93,7 @@ export class Panel extends HTMLElement {
     // this._panel.style.display = 'flex';
     // this._panel.style.width = '100%';
     // this._panel.style.height = '100%';
-    this._panel.style.backgroundColor = 'green';
+    // this._panel.style.backgroundColor = 'green';
 
     this._panel.setAttribute('part', 'panel');
 
