@@ -6,6 +6,8 @@ export interface ToolbarBlockEventMap {
 
 export class ToolbarBlock extends HTMLElement {
   private _container: HTMLDivElement;
+  private _buttons: Button[] = [];
+
   constructor() {
     super();
 
@@ -21,6 +23,7 @@ export class ToolbarBlock extends HTMLElement {
 
   public appendButton(button: Button): void {
     //button.setAttribute('exportparts', 'button');
+    this._buttons.push(button);
     this._container.appendChild(button);
 
     button.addEventListener('buttonclick', (ev) => {
@@ -31,6 +34,10 @@ export class ToolbarBlock extends HTMLElement {
         })
       );
     });
+  }
+
+  public getButtonsByCommand(command: string): Button[] {
+    return this._buttons.filter(btn => btn.command === command);
   }
 
   addEventListener<T extends keyof ToolbarBlockEventMap>(

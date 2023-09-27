@@ -1,4 +1,4 @@
-import { ButtonEventData } from './Button';
+import { Button, ButtonEventData } from './Button';
 import { ToolbarBlock } from './ToolbarBlock';
 
 export interface ToolbarEventMap {
@@ -7,6 +7,8 @@ export interface ToolbarEventMap {
 
 export class Toolbar extends HTMLElement {
   private _container: HTMLDivElement;
+
+  private _blocks: ToolbarBlock[] = [];
 
   constructor() {
     super();
@@ -21,10 +23,13 @@ export class Toolbar extends HTMLElement {
     this._container.setAttribute('part','toolbar');
 
     this.appendChild(this._container);
+
+    this.getButtonsByCommand = this.getButtonsByCommand.bind(this);
   }
 
   public appendBlock(block: ToolbarBlock): void {
     //block.setAttribute('exportparts', 'toolbar-block, button');
+    this._blocks.push(block);
     this._container.appendChild(block);
     block.addEventListener('buttonclick', (ev) => {
       // console.log('toolbar', ev.detail.button.command);
@@ -35,6 +40,24 @@ export class Toolbar extends HTMLElement {
       );
     });
 
+  }
+
+  public getButtonsByCommand(command: string): Button[] {
+    const result: Button[] = [];
+    this._blocks.forEach(block => {
+      result.push(...block.getButtonsByCommand(command));
+    });
+    return result;
+  }
+
+  public hideButtonsByCommand(command: string) {
+    const buttons = this.getButtonsByCommand(command);
+    buttons.forEach(button => button.style.display = 'none');
+  }
+
+  public showButtonsByCommand(command: string) {
+    const buttons = this.getButtonsByCommand(command);
+    buttons.forEach(button => button.style.display = '');
   }
 
   addEventListener<T extends keyof ToolbarEventMap>(

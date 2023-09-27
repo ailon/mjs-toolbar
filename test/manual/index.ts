@@ -6,6 +6,8 @@ export * from './../../src/index';
 export class Experiments {
   // private panel: Panel;
 
+  private toolbar?: Toolbar;
+
   // constructor() {
   // }
 
@@ -19,8 +21,8 @@ export class Experiments {
   public setup(): void {
     const panel = <Panel>document.getElementById('tbPanel');
 
-    const toolbar = new Toolbar();
-    toolbar.addEventListener('buttonclick', (ev) =>
+    this.toolbar = new Toolbar();
+    this.toolbar.addEventListener('buttonclick', (ev) =>
       console.log(`'${ev.detail.button.command}' button clicked.`)
     );
 
@@ -35,6 +37,8 @@ export class Experiments {
     const button11 = new Button({ icon: checkSVG, command: 'run' });
     block1.appendButton(button11);
     const button12 = new Button({ icon: checkSVG, command: 'for' });
+    button12.id = 'button12';
+    button12.style.display = 'none';
     block1.appendButton(button12);
     const button13 = new Button({ icon: checkSVG, command: 'cover' });
     block1.appendButton(button13);
@@ -44,11 +48,11 @@ export class Experiments {
     const button22 = new Button({ icon: checkSVG });
     block2.appendButton(button22);
 
-    toolbar.appendBlock(block1);
-    toolbar.appendBlock(block2);
-    toolbar.appendBlock(block3);
+    this.toolbar.appendBlock(block1);
+    this.toolbar.appendBlock(block2);
+    this.toolbar.appendBlock(block3);
 
-    panel.appendToolbar(toolbar);
+    panel.appendToolbar(this.toolbar);
 
     const toolboxPanel = <Panel>document.getElementById('toolboxPanel');
 
@@ -78,6 +82,14 @@ export class Experiments {
     const panel = <Panel>document.getElementById('tbPanel');
     if (panel) {
       panel.attach();
+    }
+  }
+
+  public doSomething(): void {
+    // console.log('do something');
+    if (this.toolbar) {
+      this.toolbar.hideButtonsByCommand('text');
+      this.toolbar.showButtonsByCommand('for');
     }
   }
 }
